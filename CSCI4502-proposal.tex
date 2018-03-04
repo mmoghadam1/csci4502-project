@@ -1,17 +1,5 @@
 \documentclass[sigconf]{acmart}
 
-\usepackage{booktabs} % For formal tables
-
-\setcopyright{rightsretained}
-
-
-
-\acmArticle{4}
-\acmPrice{15.00}
-
-% These commands are optional
-%\acmBooktitle{Transactions of the ACM Woodstock conference}
-
 \begin{document}
 \title{An Analysis in Situational Factors on Determining Credit Default Rates}
 \subtitle{Authors}
@@ -32,21 +20,43 @@
 \affiliation{}
 \email{@colorado.edu}
 
+\maketitle
 
 \begin{abstract}
 Analyzing local economic conditions to predict default rates
 \end{abstract}
 
-\begin{CCSXML}
-
-\end{CCSXML} 
+\section{Introduction}
 
 
+\section{Previous Work}
+Since the inception of credit scoring in the 1950s, it has been one of the fastest growing fields in statistical analysis. As such, there is a plethora of work in the creation of statistical credit scoring models, but all of this work has been published relatively recently. We look specifically to three types of literature in the field: Classic credit analysis, models for credit default, and statistical shortcomings of credit analysis
+\subsection{Classic credit analysis}
 
-\maketitle
+\subsection{Models for credit default}
 
 
-\bibliographystyle{ACM-Reference-Format}
-\bibliography{sample-bibliography}
+\subsection{Statistical shortcomings of credit analysis}
+
+\section{Data}
+
+\subsection{Loan-Level Mortgages}
+Freddie Mac began reporting loan-level credit performance data at the direction of its regulator, the Federal Housing Finance Agency (FHFA) with the stated purpose of increasing transparency, which "helps investors build more accurate credit performance models in support of potential risk-sharing initiatives highlighted in FHFA's Conservatorship Scorecard." We have found a single family loan-level dataset that includes loan-level origination, loan performance, and actual loss data on a proportion of single family mortgages acquired by Freddie Mac. The data contains mortgages from January 1, 1999 to December 31, 2016. 
+\subsection{Macroeconomic Data}
+
+\section{Proposed Work}
+\subsection{Preprocessing}
+We will need to convert our data into compatible forms and then merge them together. This will include matching monthly performance data to originated loan data, and also matching economic data geographically to the location the loan was made.
+\subsection{Design}
+\subsection{Evaluation}
+
+\section{Models for prediction of default}
+\subsection{Linear Discriminant Analysis}
+\subsection{Logistic Regression}
+\subsection{Survival Analysis}
+
+\section{Tools}
+Python, Pandas, Numpy, SciKit-Learn
+\section{Milestones}
 
 \end{document}
