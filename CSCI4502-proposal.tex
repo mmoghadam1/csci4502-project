@@ -1,4 +1,7 @@
-\documentclass[sigconf]{acmart}
+\documentclass[sigconf, 11pt]{acmart}
+\settopmatter{printacmref=false}
+\renewcommand\footnotetextcopyrightpermission[1]{} 
+\pagestyle{plain} 
 
 \begin{document}
 \title{An Analysis in Situational Factors on Determining Credit Default Rates}
@@ -30,13 +33,15 @@ Analyzing local economic conditions to predict default rates
 
 
 \section{Previous Work}
-Since the inception of credit scoring in the 1950s, it has been one of the fastest growing fields in statistical analysis. As such, there is a plethora of work in the creation of statistical credit scoring models, but all of this work has been published relatively recently. We look specifically to three types of literature in the field: Classic credit analysis, models for credit default, and statistical shortcomings of credit analysis
+Since its inception in the 1950s, credit scoring has been one of the fastest growing fields in statistical analytics. Because of this there is an abundance of work in the formulation of statistical credit scoring models, and all of this work has been published relatively recently. We look specifically to three types of literature in the field: Classic credit analysis, models for credit default, and statistical shortcomings of credit analysis.
+
 \subsection{Classic credit analysis}
 
 \subsection{Models for credit default}
-
+The focus of this project will be on creating a model that can accurately predict credit default rates. Much work has been done in forming statistical models to achieve this. These models include Logistic Regression, K-Nearest Neighbors, K-fold Cross Validation, and Random Forest. We look to an archive of statistical papers written on the subject, specifically examples of the use of logit and probit regressions (Zhang, 2015)\footnote{Zhang, 2015}, but also at more complicated dynamic models (Cambell, 2010)\footnote{Cambell, 2010} and instances of machine learning models such as random forests (Deng 2016)\footnote{Deng, 2016}.
 
 \subsection{Statistical shortcomings of credit analysis}
+Lending institutions employ two measures of scoring credit, namely, bureau scores and application scores. The former measure focuses solely on past credit history, while the latter includes other weighting factors such as age and location along with credit history. The issues with bureau credit scores stem primarily from omitted variable bias (Avery 2000), where local economic conditions and business cycles are not taken into account in the predictive default model. Additional problems with credit analysis can be attributed to data quality issues (Avery, 2004).
 
 \section{Data}
 
@@ -55,8 +60,11 @@ We will need to convert our data into compatible forms and then merge them toget
 \subsection{Logistic Regression}
 \subsection{Survival Analysis}
 
+
 \section{Tools}
 Python, Pandas, Numpy, SciKit-Learn
 \section{Milestones}
+
+\bibliographystyle{ACM-Reference-Format}
 
 \end{document}
