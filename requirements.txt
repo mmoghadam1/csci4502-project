@@ -2,4 +2,7 @@ jupyter
 ipython
 numpy
 pandas
+sklearn
+graphviz
+sklearn_pandas
 pymongo
