@@ -4,12 +4,8 @@ from io import BytesIO
 import sys
 import os
 
-# WARNING: WILL DELETE OLD LOANS DB IF TRUE
-DEBUG = True  # If in debug mode, will only insert 1 record from each quarter from each year
-
 
 class LoanDataLoader(object):
-
     ORIG_MAPPINGS = [
         "credit_score",
         "first_payment_date",
@@ -70,12 +66,15 @@ class LoanDataLoader(object):
         "monthly_loans": MONTHLY_MAPPINGS
     }
 
-    def __init__(self, data_dir):
+    # WARNING: WILL DELETE OLD LOANS DB IF TRUE
+    # If in debug mode, will only insert 1 record from each quarter from each year
+    def __init__(self, data_dir, debug=False):
         self.client = MongoClient("mongodb://localhost")
         self.db = self.client.loans
         self.data_dir = data_dir
+        self.debug = debug
         if "loans" in self.client.database_names():
-            if DEBUG:
+            if debug:
                 print("Dropping old loans db..")
                 self.client.drop_database("loans")
                 self._load()
@@ -91,11 +90,18 @@ class LoanDataLoader(object):
 
     def _insert_file(self, f, col, key):
         buffer = []
-        if DEBUG:
+        if self.debug:
             lines_to_read = [f.readline()]
+            lines_to_read = []
+            for i in range(0, 500):
+                lines_to_read.append(f.readline())
         else:
             lines_to_read = f.readlines()
 
+        # line = f.readline()
+        line_count = 0
+        max_lines = 250000
+        # while line:
         for line in lines_to_read:
             attribs = line.decode().strip().split("|")
             data = {}
@@ -109,10 +115,18 @@ class LoanDataLoader(object):
                 "quarter": key[:2],
                 "year": key[2:]
             })
+            # line = f.readline()
+            line_count = line_count + 1
+            # if line_count % 1000 == 0:
+            #     self.db[col].insert_many(buffer)
+            #     buffer = []
+            if line_count > max_lines:
+                break
 
-        sys.stdout.write("/{}/{}k".format(key[:2], len(buffer) / 1000))
+        sys.stdout.write("/{}/{}".format(key[:2], line_count / 1000))
         sys.stdout.flush()
         self.db[col].insert_many(buffer)
+
 
     def _load_zip(self, zipf):
         archive = zipfile.ZipFile(zipf, 'r')
@@ -129,22 +143,9 @@ class LoanDataLoader(object):
 
 
 def main():
-    loader = LoanDataLoader("data/")
+    loader = LoanDataLoader("data/", debug=True)
     db = loader.db
-    if DEBUG:  # Only run the below code in debug, since it's too much data otherwise
-        # The two different formats are in different collections
-        q1s = [doc for doc in db.orig_loans.find({"quarter": "q1"})]
-        # Note the two different databases, db.orig_loans and db.monthly_loans
-        # TODO Merge these two databases in LoanDataLoader
-        q1s.extend([doc for doc in db.monthly_loans.find({"quarter": "q1"})])
-        # Should print out 36, since 18 years * 4 quarters/year = 72 quarters total
-        # So 18 q1's in time_loans + 18 q1s in other_loans = 36
-        print(len(q1s))
-        print(q1s[0])  # Print the first item for reference
-
-    else:
-        print("Loaded data")
-        # TODO calculate stuff here
+    print("Loaded data")
 
 
 if __name__ == "__main__":
