@@ -29,17 +29,16 @@ Texas, California, Flordia, Illonis had the highest default rates.
 
 ## Application of this knowledge
 
-
-### Assessing risk in giving out a loan 
+### Application 1: Assessing risk in giving out a loan 
 These methods can be used by credit rating agencies in the financial industry such as Moody’s Investors Services and Standard and Poor's in order to more accurately assess credit risk by quantifying the effects of certain attributes to gain a better measure of risk.
 
-### Predicting a market bubble before it happens
+### Application 2: Predicting a market bubble before it happens
 This could be used by an economist to look for a bubble in a market. Searching through different attributes in loans, there could be signs that could be useful. Such methods can also be used to analyze the types of loans that are being given out characterized by predicting a number of defaults above a particular threshold.
 
-### Predicting if a loan would be defaulted upon
+### Application 3: Predicting if a loan would be defaulted upon
 Once loans are made, the models we formed could be run to predict the rate of default on the set of loans made. That is, we can answer the question: "How many people out of the n I just gave a mortgage to are going to default?" This is the knowledge gained from the analysis, but this knowledge can be used by analysts to calculate a more accurate measure of risk for the company. Following from this, once a new level of risk has been calculated, assuming it is accurate it can be used to predict profit or loss on the set of loans made. Hence this knowledge can be used to maximize expected profit or minimize expected loss by estimating the proportion of people in a set of loans who will default.
 
-### Combine our methods we created with pre-existing credit scores to create a more accurate measure
+### Application 3: Combine our methods we created with pre-existing credit scores to create a more accurate measure
 The methods we developed can be combined with pre-existing credit-score measurements to marginally increase their accuracy.
 
 
