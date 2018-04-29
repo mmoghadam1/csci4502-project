@@ -46,4 +46,4 @@ The methods we developed can be combined with pre-existing credit-score measurem
 <a href="30_CreditScore_Part5.mp4"><p>Video</p></a>
 
 ## Link to your final project paper
-<a href="30_CreditScore_Part4.pdf"><p>Paper</p></a>
+<a href="https://youtu.be/QMk3-gJySgs"><p>Paper</p></a>
